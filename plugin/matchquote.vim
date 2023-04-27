@@ -39,7 +39,7 @@ if s:matchit_n_rhs =~# '<Plug>'
 endif
 
 
-let s:quotes = ['"', '''', '`', '|']
+let s:quotes = ['"', '''', '`', '|', '$']
 
 
 function! s:matchquote(mode)
@@ -56,14 +56,23 @@ function! s:matchquote(mode)
     return
   endif
 
-  let num = len(split(getline('.'), c, 1)) - 1
+  let num=0
+  if c=='$'
+  	let num = len(split(getline('.'), '\$', 1)) - 1 "split的分隔符如果是$, 则需要转义. 
+  else
+  	let num = len(split(getline('.'), c, 1)) - 1
+  endif
   if num % 2 == 1
     return
   endif
 
   " is quotation mark under cursor odd or even?
   let col = getpos('.')[2]
-  let num = len(split(getline('.')[0:col-1], c, 1)) - 1
+  if c=='$'
+  	let num = len(split(getline('.')[0:col-1], '\$', 1)) - 1
+  else
+  	let num = len(split(getline('.')[0:col-1], c, 1)) - 1
+  endif
 
   let mvmt = num % 2 == 0 ? 'F' : 'f'
   execute 'normal!' a:mode == 'n' ? mvmt.c : mvmt.c.'m>gv'
