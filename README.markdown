@@ -1,6 +1,6 @@
 # vim-matchquote
 
-A Vim plugin to provide `%`-style motion for `'` (single quotation mark), `"` (double quotation mark), `` ` `` (backtick), and `|` (pipe).
+A Vim plugin to provide `%`-style motion for `'` (single quotation mark), `"` (double quotation mark), `` ` `` (backtick),  `|` (pipe), and '$'(dollar).
 
 Given these constraints:
 
