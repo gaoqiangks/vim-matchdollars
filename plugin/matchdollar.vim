@@ -1,9 +1,9 @@
 scriptencoding utf-8
 
-"if exists("g:loaded_matchdollar") || &cp
-"  finish
-"endif
-"let g:loaded_matchquote = 1
+if exists("g:loaded_matchdollar") || &cp
+  finish
+endif
+let g:loaded_matchquote = 1
 
 if has('nvim')
   let loaded_matchit = 1
@@ -119,6 +119,10 @@ endfunction
 nnoremap <silent> <expr> % (v:count == 0 ? ":call <SID>matchquote('n')<CR>" : '%')
 xnoremap <silent> % :<C-U>call <SID>matchquote('x')<CR>
 onoremap <silent> % :normal v%<CR>
+
+nnoremap <silent> <expr> & (v:count == 0 ? ":call <SID>matchquote('n')<CR>" : '%')
+xnoremap <silent> & :<C-U>call <SID>matchquote('x')<CR>
+onoremap <silent> & :normal v%<CR>
 
 if empty(maparg('i<Bar>', 'x')) && empty(maparg('a<Bar>', 'x'))
   xnoremap i<Bar> :<C-U>normal! T<Bar>vt<Bar><CR>
