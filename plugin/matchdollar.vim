@@ -1,9 +1,9 @@
 scriptencoding utf-8
 
-if exists("g:loaded_matchdollar") || &cp
-  finish
-endif
-let g:loaded_matchquote = 1
+"if exists("g:loaded_matchdollar") || &cp
+"  finish
+"endif
+"let g:loaded_matchquote = 1
 
 if has('nvim')
   let loaded_matchit = 1
